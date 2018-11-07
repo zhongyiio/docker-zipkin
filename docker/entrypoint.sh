@@ -6,7 +6,8 @@ export ES_HOSTS="${ES_HOSTS:-http://127.0.0.1:9200}"
 
 LOG_PATH="/data/logs"
 
-JAVA_OPTS="$JAVA_OPTS -Xmx2048M"
+# default set xmx 2G
+JAVA_OPTS="${JAVA_OPTS}"
 
 JAVA_OPTS="${JAVA_OPTS} -XX:+UseG1GC"
 
