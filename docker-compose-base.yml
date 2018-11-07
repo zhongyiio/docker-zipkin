@@ -1,0 +1,22 @@
+
+version: '2.1'
+services:
+  base-zipkin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+      - IMAGE_ARG_ALPINE_MIRROR=${IMAGE_ARG_ALPINE_MIRROR:-mirror.tuna.tsinghua.edu.cn}
+      - IMAGE_ARG_IMAGE_TAG=${IMAGE_ARG_IMAGE_TAG:-2.11.7}
+      - IMAGE_ARG_VERSION=${IMAGE_ARG_VERSION:-2.11.7}
+      - ZIPKIN_VERSION=${ZIPKIN_VERSION:-2.11.7}
+    image: ${IMAGE_PREFIX:-cloudready/}${IMAGE_NAME:-zipkin}:${IMAGE_TAG:-2.11.7-SNAPSHOT}
+    labels:
+      deploy.config.commit: ${LABEL_DEPLOY_CONFIG_COMMIT:-unknown}
+      deploy.config.name: ${LABEL_DEPLOY_CONFIG_NAME:-unknown}
+      deploy.config.ref: ${LABEL_DEPLOY_CONFIG_REF:-unknown}
+      deploy.util.commit: ${LABEL_DEPLOY_UTIL_COMMIT:-unknown}
+      deploy.util.ref: ${LABEL_DEPLOY_UTIL_REF:-unknown}
+      instance.name.short: ${LABEL_INSTANCE_NAME_SHORT:-standalone.zipkin}
+      instance.name: ${LABEL_INSTANCE_NAME:-127.0.0.1/zipkin/standalone}
+    restart: always
