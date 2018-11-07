@@ -1,4 +1,4 @@
-FROM n3-docker-registry.advai.net/java-oracle:8u171-en_US.UTF-8_Asia.Shanghai-alpine
+FROM cirepo/java-oracle:8u171-en_US.UTF-8_Asia.Shanghai-alpine
 
 ARG ZIPKIN_VERSION=2.11.7
 ARG ARTIFACT_REPOSITORY=unknown
