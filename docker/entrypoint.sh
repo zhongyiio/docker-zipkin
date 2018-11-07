@@ -6,9 +6,6 @@ export ES_HOSTS="${ES_HOSTS:-http://127.0.0.1:9200}"
 
 LOG_PATH="/data/logs"
 
-# default set xmx 2G
-JAVA_OPTS="${JAVA_OPTS}"
-
 JAVA_OPTS="${JAVA_OPTS} -XX:+UseG1GC"
 
 JAVA_OPTS="${JAVA_OPTS} -XX:+HeapDumpOnOutOfMemoryError -XX:-OmitStackTraceInFastThrow"
