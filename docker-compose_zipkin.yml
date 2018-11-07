@@ -1,0 +1,25 @@
+
+version: '2.1'
+services:
+  image:
+    extends:
+      file: docker-compose-base.yml
+      service: base-zipkin
+    container_name: ${CONTAINER_HOST_NAME:-zipkin}
+    hostname: ${CONTAINER_HOST_NAME:-zipkin}
+    environment:
+      - STORAGE_TYPE=${STORAGE_TYPE:-elasticsearch}
+      - ES_HOSTS=${ES_HOSTS:-http://192.168.3.40:9200}
+    ports:
+    - "${SERVER_PORT:-9411}:9411"
+    restart: always
+    volumes:
+    - data:/data
+
+volumes:
+  data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/data
+      o: bind
