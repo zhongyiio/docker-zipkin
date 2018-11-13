@@ -3,10 +3,11 @@ set -e
 
 export STORAGE_TYPE="${STORAGE_TYPE:-elasticsearch}"
 export ES_HOSTS="${ES_HOSTS:-http://127.0.0.1:9200}"
+export ZIPKIN_LOG_LEVEL="${ZIPKIN_LOG_LEVEL:-DEBUG}"
 
 LOG_PATH="/data/logs"
 
-JAVA_OPTS="${JAVA_OPTS} -XX:+UseG1GC"
+JAVA_OPTS="-XX:+UseG1GC"
 
 JAVA_OPTS="${JAVA_OPTS} -XX:+HeapDumpOnOutOfMemoryError -XX:-OmitStackTraceInFastThrow"
 
@@ -17,7 +18,7 @@ JAVA_OPTS="${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom"
 JAVA_OPTS="${JAVA_OPTS} -XX:ErrorFile=/tmp/jvm-crash-zipkin.log -XX:HeapDumpPath=/tmp"
 
 JAVA_OPTS="${JAVA_OPTS} -Xloggc:${LOG_PATH}/jvmgc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCApplicationConcurrentTime -XX:+PrintGCApplicationStoppedTime"
-JAVA_OPTS="${JAVA_OPTS} -Dfile.encoding=UTF-8"
-export JAVA_TOOL_OPTIONS="${JAVA_TOOL_OPTIONS} ${JAVA_OPTS}"
+JAVA_OPTS="${JAVA_OPTS} -Duser.language=en -Duser.region=US -Dfile.encoding=UTF-8"
+export JAVA_TOOL_OPTIONS="${JAVA_OPTS}"
 
 exec "$@"
