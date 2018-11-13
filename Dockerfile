@@ -27,6 +27,7 @@ LABEL image.project.groupId=$PROJECT_GROUPID
 LABEL image.project.version=$PROJECT_VERSION
 
 COPY --chown=1000:1000 docker /
+COPY --chown=1000:1000 docker-*.yml /
 
 RUN curl -SL https://jcenter.bintray.com/io/zipkin/java/zipkin-server/${ZIPKIN_VERSION:-}/zipkin-server-${ZIPKIN_VERSION:-}-exec.jar > zipkin-server.jar
 
