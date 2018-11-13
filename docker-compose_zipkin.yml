@@ -9,7 +9,7 @@ services:
     environment:
     - STORAGE_TYPE=${STORAGE_TYPE:-elasticsearch}
     - ES_HOSTS=${ES_HOSTS:-http://192.168.3.40:9200}
-    - ZIPKIN_LOG_LEVEL=${ZIPKIN_LOG_LEVEL:-DEBAUG}
+    - ZIPKIN_LOG_LEVEL=${ZIPKIN_LOG_LEVEL:-DEBUG}
     ports:
     - "${SERVER_PORT:-9411}:9411"
     restart: always
